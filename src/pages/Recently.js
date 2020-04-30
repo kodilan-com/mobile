@@ -1,16 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import PostPreview from '../components/PostPreview'
+import {View, Text, ScrollView} from 'react-native';
+import PostPreview from '../components/PostPreview';
+import Header from '../components/Header';
 
 function Recently() {
   return (
-    <View>
-      <PostPreview />
-      <PostPreview />
-      <PostPreview />
-      <PostPreview />
-      <PostPreview />
-    </View>
+    <React.Fragment>
+      <Header title="Son Eklenen İlanlar" />
+      <ScrollView>
+        <PostPreview />
+        <PostPreview />
+        <PostPreview />
+        <PostPreview />
+        <PostPreview />
+      </ScrollView>
+    </React.Fragment>
   );
 }
 

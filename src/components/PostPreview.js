@@ -68,7 +68,7 @@ function PostPreview() {
 const styles = StyleSheet.create({
   post: {
     width: '100%',
-    borderLeftWidth: 4,
+    borderLeftWidth: 0,
     borderLeftColor: '#186fc9',
     paddingHorizontal: 24,
     paddingTop: 20,
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingVertical: 4,
     paddingHorizontal: 8,
-    marginRight: 6,
-    marginBottom: 8
+    marginRight: 8,
+    marginBottom: 10
   },
   tagText: {
     color: '#666',

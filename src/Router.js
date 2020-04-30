@@ -32,7 +32,7 @@ function Tabs() {
         activeTintColor: '#FFF',
         activeBackgroundColor: '#1d9b54',
         inactiveTintColor: '#EEE',
-        style: {backgroundColor: '#26ae61', height: 55},
+        style: {backgroundColor: '#26ae61', height: 55, borderTopWidth: 0},
       }}>
       <Tab.Screen
         name="Recently"
@@ -69,7 +69,7 @@ function Tabs() {
 function Router() {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="#26ae61" barStyle="light-content" />
+      <StatusBar backgroundColor="#1d9b54" barStyle="light-content" />
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="Tabs" component={Tabs} />
       </Stack.Navigator>
