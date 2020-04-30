@@ -12,7 +12,7 @@ function SearchTag({name, type}) {
 const styles = StyleSheet.create({
   tag: {
     backgroundColor: '#FFF',
-    borderColor: '#aaa',
+    borderColor: '#bbb',
     borderWidth: 1,
     borderRadius: 3,
     paddingVertical: 6,
