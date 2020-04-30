@@ -18,14 +18,20 @@ function Search() {
   return (
     <View style={styles.container}>
       <Header title="İlan Arama" />
-      <View style={[styles.container, styles.searchBox]}>
+      <View style={[styles.container, styles.box]}>
         <TextInput
           style={styles.input}
           placeholderTextColor={'#666'}
           placeholder="Pozisyon adı, teknoloji adı"
+          value={searchText}
+          onChangeText={text => setSearchText(text)}
         />
         <View style={styles.pickerBox}>
-          <Picker mode="dialog" style={styles.location}>
+          <Picker
+            mode="dialog"
+            style={styles.picker}
+            selectedValue={searchLocation}
+            onValueChange={value => setSearchLocation(value)}>
             <Picker.Item label="Şehir Seçiniz" value="" />
             <Picker.Item label="İstanbul" value="İstanbul" />
           </Picker>
@@ -45,8 +51,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
   },
-  searchBox: {
-    paddingTop: 30,
+  box: {
+    paddingTop: 25,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
@@ -69,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     position: 'relative',
   },
-  location: {
+  picker: {
     height: 50,
     color: '#666',
   },
