@@ -30,7 +30,7 @@ function Tabs() {
       tabBarOptions={{
         showLabel: false,
         activeTintColor: '#FFF',
-        activeBackgroundColor: '#118f47',
+        activeBackgroundColor: '#1d9b54',
         inactiveTintColor: '#EEE',
         style: {backgroundColor: '#26ae61', height: 55},
       }}>

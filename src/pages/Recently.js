@@ -1,10 +1,15 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import PostPreview from '../components/PostPreview'
 
 function Recently() {
   return (
     <View>
-      <Text>Recently</Text>
+      <PostPreview />
+      <PostPreview />
+      <PostPreview />
+      <PostPreview />
+      <PostPreview />
     </View>
   );
 }
