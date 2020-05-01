@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   box: {
-    paddingTop: 25,
+    paddingTop: 20,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },

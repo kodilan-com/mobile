@@ -1,18 +1,18 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import SearchTag from './SearchTag';
+import Tag from './Tag';
 
 function SearchSuggestions() {
   return (
     <View style={styles.tags}>
-      <SearchTag name="Frontend" type="tag" />
-      <SearchTag name="Backend" type="tag" />
-      <SearchTag name="Mobile" type="tag" />
-      <SearchTag name="DevOps" type="tag" />
-      <SearchTag name="İstanbul" type="location" />
-      <SearchTag name="İzmir" type="location" />
-      <SearchTag name="Ankara" type="location" />
-      <SearchTag name="Remote" type="location" />
+      <Tag name="Frontend" type="tag" />
+      <Tag name="Backend" type="tag" />
+      <Tag name="Mobile" type="tag" />
+      <Tag name="DevOps" type="tag" />
+      <Tag name="İstanbul" type="location" />
+      <Tag name="İzmir" type="location" />
+      <Tag name="Ankara" type="location" />
+      <Tag name="Remote" type="location" />
     </View>
   );
 }

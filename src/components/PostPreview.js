@@ -1,10 +1,19 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import Tag from '../components/Tag';
 
 function PostPreview() {
+  const navigation = useNavigation();
+  function onPressPost() {
+    navigation.navigate('Post');
+  }
   return (
-    <View style={styles.post}>
+    <TouchableOpacity
+      style={styles.post}
+      activeOpacity={0.75}
+      onPress={() => onPressPost()}>
       <View style={styles.top}>
         <View style={{flex: 1}}>
           <Text style={styles.title}>Kıdemli Android Geliştirme Danışmanı</Text>
@@ -39,29 +48,50 @@ function PostPreview() {
         </View>
       </View>
       <View style={styles.tags}>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>php</Text>
-        </View>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>laravel</Text>
-        </View>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>symfony</Text>
-        </View>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>backend</Text>
-        </View>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>redis</Text>
-        </View>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>mysql</Text>
-        </View>
-        <View style={styles.tag}>
-          <Text style={styles.tagText}>mongodb</Text>
-        </View>
+        <Tag
+          name="php"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+        <Tag
+          name="laravel"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+        <Tag
+          name="symfony"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+        <Tag
+          name="backend"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+        <Tag
+          name="redis"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+        <Tag
+          name="mysql"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+        <Tag
+          name="mongodb"
+          type="tag"
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -72,7 +102,7 @@ const styles = StyleSheet.create({
     borderLeftColor: '#186fc9',
     paddingHorizontal: 24,
     paddingTop: 20,
-    paddingBottom: 15,
+    paddingBottom: 14,
     backgroundColor: '#FFF',
     borderBottomColor: '#e0e0e0',
     borderBottomWidth: 1,
@@ -123,7 +153,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection: 'row',
-    marginTop: 14
+    marginTop: 14,
   },
   tag: {
     backgroundColor: '#f1f1f1',
@@ -133,7 +163,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 8,
     marginRight: 8,
-    marginBottom: 10
+    marginBottom: 10,
   },
   tagText: {
     color: '#666',

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
-function SearchTag({name, type}) {
+function Tag({name, type, tagStyle, tagTextStyle}) {
   return (
-    <TouchableOpacity activeOpacity={0.6} style={styles.tag}>
-      <Text style={styles.tagText}>{name}</Text>
+    <TouchableOpacity activeOpacity={0.6} style={[styles.tag, {...tagStyle}]}>
+      <Text style={[styles.tagText, {...tagTextStyle}]}>{name}</Text>
     </TouchableOpacity>
   );
 }
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchTag;
+export default Tag;
