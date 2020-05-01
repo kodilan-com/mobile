@@ -1,23 +1,37 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Linking} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-function SocialButtons() {
+function SocialButtons({web, twitter, linkedin}) {
+  function onPressButton(url) {
+    Linking.openURL(url);
+  }
   return (
     <View style={styles.social}>
-      <TouchableOpacity style={styles.socialButton} activeOpacity={0.7}>
-        <Icon name="globe" color="#FFF" size={16} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.socialButton, styles.twitterButton]}
-        activeOpacity={0.7}>
-        <Icon name="twitter" color="#FFF" size={16} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.socialButton, styles.linkedinButton]}
-        activeOpacity={0.7}>
-        <Icon name="linkedin" color="#FFF" size={16} />
-      </TouchableOpacity>
+      {web ? (
+        <TouchableOpacity
+          style={styles.socialButton}
+          activeOpacity={0.7}
+          onPress={() => onPressButton(web)}>
+          <Icon name="globe" color="#FFF" size={16} />
+        </TouchableOpacity>
+      ) : null}
+      {twitter ? (
+        <TouchableOpacity
+          style={[styles.socialButton, styles.twitterButton]}
+          activeOpacity={0.7}
+          onPress={() => onPressButton(twitter)}>
+          <Icon name="twitter" color="#FFF" size={16} />
+        </TouchableOpacity>
+      ) : null}
+      {linkedin ? (
+        <TouchableOpacity
+          style={[styles.socialButton, styles.linkedinButton]}
+          activeOpacity={0.7}
+          onPress={() => onPressButton(linkedin)}>
+          <Icon name="linkedin" color="#FFF" size={16} />
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 }

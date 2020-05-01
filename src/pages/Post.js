@@ -52,7 +52,10 @@ function Post({route}) {
             <Text style={styles.postTitle}>{data.position}</Text>
           </View>
         </View>
-        <Content style={{width: '100%', marginVertical: 25}} content={data.description} />
+        <Content
+          style={{width: '100%', marginVertical: 25}}
+          content={data.description}
+        />
         <View style={styles.card}>
           <View style={styles.item}>
             <View style={styles.itemHeader}>
@@ -60,7 +63,7 @@ function Post({route}) {
               <Text style={styles.itemHeaderText}>Son Güncelleme:</Text>
             </View>
             <Text style={styles.itemContent}>
-              {timeSince(data.updated_at)} önce
+              {timeSince(data.updated_at)}
             </Text>
           </View>
           <View style={styles.item}>
@@ -94,7 +97,11 @@ function Post({route}) {
               <Text style={styles.itemHeaderText}>Bağlantılar:</Text>
             </View>
             <View style={{flex: 1}}>
-              <SocialButtons />
+              <SocialButtons
+                web={data.company.www}
+                twitter={data.company.twitter}
+                linkedin={data.company.linkedin}
+              />
             </View>
           </View>
         </View>
