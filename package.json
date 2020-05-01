@@ -16,6 +16,8 @@
     "@react-navigation/native": "^5.1.7",
     "@react-navigation/stack": "^5.2.14",
     "axios": "^0.19.2",
+    "i": "^0.3.6",
+    "npm": "^6.14.4",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-autoheight-webview": "^1.5.1",
@@ -23,6 +25,7 @@
     "react-native-reanimated": "^1.8.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.7.0",
+    "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-webview": "^9.4.0"
   },

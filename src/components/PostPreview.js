@@ -1,13 +1,65 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {SvgUri} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
 import Tag from '../components/Tag';
+import timeSince from '../helpers/timeSince';
 
-function PostPreview() {
+function PostPreview({data}) {
   const navigation = useNavigation();
   function onPressPost() {
     navigation.navigate('Post');
+  }
+  function renderType() {
+    if (data.type === 1) {
+      return <Text style={styles.type}>Tam Zamanlı</Text>;
+    } else if (data.type === 2) {
+      return <Text style={[styles.type, styles.type2]}>Yarı Zamanlı</Text>;
+    } else if (data.type === 3) {
+      return <Text style={[styles.type, styles.type3]}>Stajyer</Text>;
+    }
+  }
+  function renderTags() {
+    return (
+      <>
+        {data.tags.length ? (
+          <View style={styles.tags}>
+            {data.tags.map(tag => (
+              <Tag
+                name={tag.name}
+                key={data.slug + '-' + tag.slug}
+                type="tag"
+                tagStyle={styles.tag}
+                tagTextStyle={styles.tagText}
+              />
+            ))}
+          </View>
+        ) : null}
+      </>
+    );
+  }
+  function renderImage() {
+    if (data.company.logo.includes('.svg')) {
+      console.log(data.company.logo);
+      return (
+        <SvgUri
+          style={styles.image}
+          width={40}
+          height={40}
+          uri={data.company.logo}
+        />
+      );
+    } else {
+      return (
+        <Image
+          style={styles.image}
+          source={{
+            uri: data.company.logo,
+          }}
+        />
+      );
+    }
   }
   return (
     <TouchableOpacity
@@ -16,81 +68,32 @@ function PostPreview() {
       onPress={() => onPressPost()}>
       <View style={styles.top}>
         <View style={{flex: 1}}>
-          <Text style={styles.title}>Kıdemli Android Geliştirme Danışmanı</Text>
-          <Text style={styles.type}>Tam Zamanlı</Text>
+          <Text style={styles.title}>{data.position}</Text>
+          {renderType()}
         </View>
-        <Image
-          style={styles.image}
-          source={{
-            uri:
-              'https://kodilan.ams3.digitaloceanspaces.com/companies/piple.png',
-          }}
-        />
+        {renderImage()}
       </View>
       <View style={styles.info}>
         <View style={styles.infoItem}>
           <Icon name="briefcase" color="#333" size={14} />
           <Text style={styles.infoText} numberOfLines={1}>
-            Piple
+            {data.company.name}
           </Text>
         </View>
         <View style={styles.infoItem}>
           <Icon name="map-pin" color="#333" size={14} />
           <Text style={styles.infoText} numberOfLines={1}>
-            Bursa
+            {data.location}
           </Text>
         </View>
         <View style={styles.infoItem}>
           <Icon name="clock" color="#333" size={14} />
           <Text style={styles.infoText} numberOfLines={1}>
-            1 gün önce
+            {timeSince(data.updated_at)}
           </Text>
         </View>
       </View>
-      <View style={styles.tags}>
-        <Tag
-          name="php"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-        <Tag
-          name="laravel"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-        <Tag
-          name="symfony"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-        <Tag
-          name="backend"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-        <Tag
-          name="redis"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-        <Tag
-          name="mysql"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-        <Tag
-          name="mongodb"
-          type="tag"
-          tagStyle={styles.tag}
-          tagTextStyle={styles.tagText}
-        />
-      </View>
+      {renderTags()}
     </TouchableOpacity>
   );
 }
@@ -129,6 +132,16 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     alignSelf: 'flex-start',
   },
+  type2: {
+    color: '#f1630d',
+    borderColor: '#f1630d',
+    backgroundColor: '#fef6f0',
+  },
+  type3: {
+    color: '#dcaa0c',
+    borderColor: '#dcaa0c',
+    backgroundColor: '#fdfcf2',
+  },
   image: {
     width: 40,
     height: 40,
@@ -138,6 +151,7 @@ const styles = StyleSheet.create({
   info: {
     flexDirection: 'row',
     marginTop: 14,
+    flexWrap: 'wrap',
   },
   infoItem: {
     marginRight: 14,
