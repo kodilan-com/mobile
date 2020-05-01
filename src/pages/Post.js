@@ -49,7 +49,9 @@ function Post({route}) {
             <Text style={styles.companyName} numberOfLines={1}>
               {data.company.name}
             </Text>
-            <Text style={styles.postTitle}>{data.position}</Text>
+            <Text style={styles.postTitle} numberOfLines={1}>
+              {data.position}
+            </Text>
           </View>
         </View>
         <Content
@@ -62,9 +64,7 @@ function Post({route}) {
               <Icon name="calendar" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Son Güncelleme:</Text>
             </View>
-            <Text style={styles.itemContent}>
-              {timeSince(data.updated_at)}
-            </Text>
+            <Text style={styles.itemContent}>{timeSince(data.updated_at)}</Text>
           </View>
           <View style={styles.item}>
             <View style={styles.itemHeader}>
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
   },
   companyDetails: {
     marginLeft: 25,
+    flex: 1,
   },
   companyName: {
     color: '#333',
