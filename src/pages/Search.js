@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import {Picker} from '@react-native-community/picker';
 import Header from '../components/Header';
 import SearchSuggestions from '../components/SearchSuggestions';
+import locations from '../helpers/locations';
 
 function Search({navigation}) {
   const [searchText, setSearchText] = useState();
@@ -37,7 +38,13 @@ function Search({navigation}) {
             selectedValue={searchLocation}
             onValueChange={value => setSearchLocation(value)}>
             <Picker.Item label="Şehir Seçiniz" value="" />
-            <Picker.Item label="İstanbul" value="İstanbul" />
+            {locations.map(item => (
+              <Picker.Item
+                key={'location' + item.location}
+                label={item.location}
+                value={item.location}
+              />
+            ))}
           </Picker>
         </View>
         <TouchableOpacity
