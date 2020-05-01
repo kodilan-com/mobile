@@ -4,6 +4,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {SvgUri} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
 import Tag from '../components/Tag';
+import CompanyImage from './CompanyImage';
 import timeSince from '../helpers/timeSince';
 
 function PostPreview({data}) {
@@ -39,28 +40,6 @@ function PostPreview({data}) {
       </>
     );
   }
-  function renderImage() {
-    if (data.company.logo.includes('.svg')) {
-      console.log(data.company.logo);
-      return (
-        <SvgUri
-          style={styles.image}
-          width={40}
-          height={40}
-          uri={data.company.logo}
-        />
-      );
-    } else {
-      return (
-        <Image
-          style={styles.image}
-          source={{
-            uri: data.company.logo,
-          }}
-        />
-      );
-    }
-  }
   return (
     <TouchableOpacity
       style={styles.post}
@@ -71,7 +50,12 @@ function PostPreview({data}) {
           <Text style={styles.title}>{data.position}</Text>
           {renderType()}
         </View>
-        {renderImage()}
+        <CompanyImage
+          style={styles.image}
+          uri={data.company.logo}
+          width={40}
+          height={40}
+        />
       </View>
       <View style={styles.info}>
         <View style={styles.infoItem}>
@@ -147,6 +131,8 @@ const styles = StyleSheet.create({
     height: 40,
     marginLeft: 20,
     marginTop: 5,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 20,
   },
   info: {
     flexDirection: 'row',
