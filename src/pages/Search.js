@@ -5,16 +5,20 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {Picker} from '@react-native-community/picker';
 import Header from '../components/Header';
 import SearchSuggestions from '../components/SearchSuggestions';
 
-function Search() {
+function Search({navigation}) {
   const [searchText, setSearchText] = useState();
   const [searchLocation, setSearchLocation] = useState();
+  function onPressSearch() {
+    navigation.navigate('SearchResults', {
+      params: {query: searchText, location: searchLocation},
+    });
+  }
   return (
     <View style={styles.container}>
       <Header title="İlan Arama" />
@@ -36,7 +40,10 @@ function Search() {
             <Picker.Item label="İstanbul" value="İstanbul" />
           </Picker>
         </View>
-        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.7}
+          onPress={() => onPressSearch()}>
           <Icon name="search" color="#fff" size={24} />
           <Text style={styles.buttonText}>İlan Ara</Text>
         </TouchableOpacity>

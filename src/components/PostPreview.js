@@ -10,7 +10,7 @@ import timeSince from '../helpers/timeSince';
 function PostPreview({data}) {
   const navigation = useNavigation();
   function onPressPost() {
-    navigation.navigate('Post', {data});
+    navigation.push('Post', {data});
   }
   function renderType() {
     if (data.type === 1) {

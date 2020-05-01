@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
-import {Recently, Search, Subscribe, Add, Post} from './pages';
+import {Recently, Search, Subscribe, Add, Post, SearchResults} from './pages';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -73,6 +73,7 @@ function Router() {
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="Tabs" component={Tabs} />
         <Stack.Screen name="Post" component={Post} />
+        <Stack.Screen name="SearchResults" component={SearchResults} />
       </Stack.Navigator>
     </NavigationContainer>
   );
