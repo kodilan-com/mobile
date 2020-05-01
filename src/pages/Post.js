@@ -1,50 +1,67 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import Header from '../components/Header';
 import Icon from 'react-native-vector-icons/Feather';
 import SocialButtons from '../components/SocialButtons';
 import ShareButton from '../components/ShareButton';
 import Content from '../components/Content';
 import Tag from '../components/Tag';
+import Apply from '../components/Apply';
+import CompanyImage from '../components/CompanyImage';
+import timeSince from '../helpers/timeSince';
 
-function Post() {
+function Post({route}) {
+  const data = route.params.data;
+  function renderTags() {
+    return (
+      <>
+        {data.tags.length ? (
+          <View style={styles.tags}>
+            {data.tags.map(tag => (
+              <Tag
+                name={tag.name}
+                key={data.slug + '-' + tag.slug + '-detail'}
+                type="tag"
+                tagStyle={styles.tag}
+                tagTextStyle={styles.tagText}
+              />
+            ))}
+          </View>
+        ) : null}
+      </>
+    );
+  }
   return (
     <View style={styles.container}>
       <Header
-        title="PHP Backend Developer"
-        button={<ShareButton url="https://www.google.com/" />}
+        title={data.position}
+        button={<ShareButton url={data.post_url} />}
       />
       <ScrollView style={styles.container}>
         <View style={styles.company}>
-          <Image
+          <CompanyImage
             style={styles.image}
-            source={{
-              uri:
-                'https://kodilan.ams3.digitaloceanspaces.com/companies/piple.png',
-            }}
+            uri={data.company.logo}
+            width={48}
+            height={48}
           />
           <View style={styles.companyDetails}>
             <Text style={styles.companyName} numberOfLines={1}>
-              Piple
+              {data.company.name}
             </Text>
-            <Text style={styles.postTitle}>PHP Backend Developer</Text>
+            <Text style={styles.postTitle}>{data.position}</Text>
           </View>
         </View>
-        <Content style={{width: '100%', marginVertical: 25}} />
+        <Content style={{width: '100%', marginVertical: 25}} content={data.description} />
         <View style={styles.card}>
           <View style={styles.item}>
             <View style={styles.itemHeader}>
               <Icon name="calendar" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Son Güncelleme:</Text>
             </View>
-            <Text style={styles.itemContent}>12 Mayıs 2020</Text>
+            <Text style={styles.itemContent}>
+              {timeSince(data.updated_at)} önce
+            </Text>
           </View>
           <View style={styles.item}>
             <View style={styles.itemHeader}>
@@ -52,9 +69,7 @@ function Post() {
               <Text style={styles.itemHeaderText}>Pozisyon:</Text>
             </View>
             <View style={{flex: 1}}>
-              <Text style={styles.itemContent}>
-                Android Geliştirme Danışmanı
-              </Text>
+              <Text style={styles.itemContent}>{data.position}</Text>
             </View>
           </View>
           <View style={styles.item}>
@@ -63,7 +78,7 @@ function Post() {
               <Text style={styles.itemHeaderText}>Lokasyon:</Text>
             </View>
             <View style={{flex: 1}}>
-              <Text style={styles.itemContent}>Remote</Text>
+              <Text style={styles.itemContent}>{data.location}</Text>
             </View>
           </View>
           <View style={styles.item}>
@@ -71,28 +86,7 @@ function Post() {
               <Icon name="bookmark" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Etiketler:</Text>
             </View>
-            <View style={{flex: 1}}>
-              <View style={styles.tags}>
-                <Tag
-                  name="android"
-                  type="tag"
-                  tagStyle={styles.tag}
-                  tagTextStyle={styles.tagText}
-                />
-                <Tag
-                  name="mobile"
-                  type="tag"
-                  tagStyle={styles.tag}
-                  tagTextStyle={styles.tagText}
-                />
-                <Tag
-                  name="and"
-                  type="tag"
-                  tagStyle={styles.tag}
-                  tagTextStyle={styles.tagText}
-                />
-              </View>
-            </View>
+            <View style={{flex: 1}}>{renderTags()}</View>
           </View>
           <View style={styles.item}>
             <View style={styles.itemHeader}>
@@ -104,16 +98,11 @@ function Post() {
             </View>
           </View>
         </View>
-        <View style={styles.applyButtons}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.applyButton}>
-            <Icon name="mail" color="#FFF" size={20} />
-            <Text style={styles.applyButtonText}>E-Posta ile Başvur</Text>
-          </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.8} style={[styles.applyButton, {marginTop: 10}]}>
-            <Icon name="link" color="#FFF" size={20} />
-            <Text style={styles.applyButtonText}>Site Üzerinden Başvur</Text>
-          </TouchableOpacity>
-        </View>
+        <Apply
+          email={data.apply_email}
+          url={data.apply_url}
+          position={data.position}
+        />
       </ScrollView>
     </View>
   );
@@ -181,33 +170,17 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection: 'row',
+    marginBottom: -10,
   },
   tag: {
     paddingVertical: 3,
     paddingHorizontal: 6,
     marginBottom: 0,
+    marginBottom: 10,
   },
   tagText: {
     fontSize: 13,
   },
-  applyButtons:{
-    paddingVertical: 30
-  },
-  applyButton: {
-    backgroundColor: '#1d9b54',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 15,
-    marginHorizontal: '5%',
-    borderRadius: 3
-  },
-  applyButtonText: {
-    color: '#FFF',
-    marginLeft: 15,
-    fontSize: 16,
-    fontWeight: 'bold'
-  }
 });
 
 export default Post;
