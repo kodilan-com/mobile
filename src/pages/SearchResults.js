@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import PostPreview from '../components/PostPreview';
 import Header from '../components/Header';
+import PostsLoading from '../components/PostsLoading';
 import getSearchPosts from '../requests/getSearchPosts';
 import getTagPosts from '../requests/getTagPosts';
 
@@ -21,11 +22,15 @@ function SearchResults({route}) {
   return (
     <React.Fragment>
       <Header title="Arama Sonuçları" />
-      <FlatList
-        data={searchPosts}
-        renderItem={item => <PostPreview data={item.item} />}
-        keyExtractor={item => item.slug}
-      />
+      {searchPosts.length ? (
+        <FlatList
+          data={searchPosts}
+          renderItem={item => <PostPreview data={item.item} />}
+          keyExtractor={item => item.slug}
+        />
+      ) : (
+        <PostsLoading />
+      )}
     </React.Fragment>
   );
 }

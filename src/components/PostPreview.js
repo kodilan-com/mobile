@@ -1,7 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {SvgUri} from 'react-native-svg';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Tag from '../components/Tag';
 import CompanyImage from './CompanyImage';
