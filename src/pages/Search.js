@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -15,6 +15,10 @@ import locations from '../helpers/locations';
 function Search({navigation}) {
   const [searchText, setSearchText] = useState();
   const [searchLocation, setSearchLocation] = useState();
+  const [editable, setEditable] = useState(false);
+  useEffect(() => {
+    setEditable(true);
+  }, []);
   function onPressSearch() {
     navigation.navigate('SearchResults', {
       params: {query: searchText, location: searchLocation},
@@ -25,6 +29,7 @@ function Search({navigation}) {
       <Header title="İlan Arama" />
       <View style={[styles.container, styles.box]}>
         <TextInput
+          editable={editable}
           style={styles.input}
           placeholderTextColor={'#666'}
           placeholder="Pozisyon adı, teknoloji adı"

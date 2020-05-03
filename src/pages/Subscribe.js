@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,10 @@ function Subscribe() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [frequency, setFrequency] = useState('weekly');
+  const [editable, setEditable] = useState(false);
+  useEffect(() => {
+    setEditable(true);
+  }, []);
   function onPressSubscribe() {
     if (name && email && frequency) {
       postSubscribe({name, email, frequency})
@@ -57,17 +61,19 @@ function Subscribe() {
           </Picker>
         </View>
         <TextInput
+          editable={editable}
           style={styles.input}
           placeholderTextColor={'#666'}
           placeholder="İsim Soyisim"
-          value={name}
+          defaultValue={name}
           onChangeText={value => setName(value)}
         />
         <TextInput
+          editable={editable}
           style={styles.input}
           placeholderTextColor={'#666'}
           placeholder="E-posta Adresi"
-          value={email}
+          defaultValue={email}
           onChangeText={value => setEmail(value)}
           autoCompleteType="email"
           keyboardType="email-address"
