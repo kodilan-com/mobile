@@ -3,7 +3,8 @@ import {View, StyleSheet, TouchableOpacity, Linking} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 function SocialButtons({web, twitter, linkedin}) {
-  function onPressButton(url) {
+  function onPressButton(url, platform) {
+    platform === 'twitter' ? url = `https://twitter.com/${url}` : null
     Linking.openURL(url);
   }
   return (
@@ -12,7 +13,7 @@ function SocialButtons({web, twitter, linkedin}) {
         <TouchableOpacity
           style={styles.socialButton}
           activeOpacity={0.7}
-          onPress={() => onPressButton(web)}>
+          onPress={() => onPressButton(web, 'web')}>
           <Icon name="globe" color="#FFF" size={16} />
         </TouchableOpacity>
       ) : null}
@@ -20,7 +21,7 @@ function SocialButtons({web, twitter, linkedin}) {
         <TouchableOpacity
           style={[styles.socialButton, styles.twitterButton]}
           activeOpacity={0.7}
-          onPress={() => onPressButton(twitter)}>
+          onPress={() => onPressButton(twitter, 'twitter')}>
           <Icon name="twitter" color="#FFF" size={16} />
         </TouchableOpacity>
       ) : null}
@@ -28,7 +29,7 @@ function SocialButtons({web, twitter, linkedin}) {
         <TouchableOpacity
           style={[styles.socialButton, styles.linkedinButton]}
           activeOpacity={0.7}
-          onPress={() => onPressButton(linkedin)}>
+          onPress={() => onPressButton(linkedin, 'linkedin')}>
           <Icon name="linkedin" color="#FFF" size={16} />
         </TouchableOpacity>
       ) : null}
