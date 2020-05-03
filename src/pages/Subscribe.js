@@ -65,7 +65,7 @@ function Subscribe() {
           style={styles.input}
           placeholderTextColor={'#666'}
           placeholder="İsim Soyisim"
-          defaultValue={name}
+          value={name}
           onChangeText={value => setName(value)}
         />
         <TextInput
@@ -73,7 +73,7 @@ function Subscribe() {
           style={styles.input}
           placeholderTextColor={'#666'}
           placeholder="E-posta Adresi"
-          defaultValue={email}
+          value={email}
           onChangeText={value => setEmail(value)}
           autoCompleteType="email"
           keyboardType="email-address"
