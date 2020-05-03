@@ -6,20 +6,12 @@ import {useNavigation} from '@react-navigation/native';
 import Tag from '../components/Tag';
 import CompanyImage from './CompanyImage';
 import timeSince from '../helpers/timeSince';
+import PostType from '../components/PostType';
 
 function PostPreview({data}) {
   const navigation = useNavigation();
   function onPressPost() {
     navigation.push('Post', {data});
-  }
-  function renderType() {
-    if (data.type === 1) {
-      return <Text style={styles.type}>Tam Zamanlı</Text>;
-    } else if (data.type === 2) {
-      return <Text style={[styles.type, styles.type2]}>Yarı Zamanlı</Text>;
-    } else if (data.type === 3) {
-      return <Text style={[styles.type, styles.type3]}>Stajyer</Text>;
-    }
   }
   function renderTags() {
     return (
@@ -48,7 +40,7 @@ function PostPreview({data}) {
       <View style={styles.top}>
         <View style={{flex: 1}}>
           <Text style={styles.title}>{data.position}</Text>
-          {renderType()}
+          <PostType type={data.type} />
         </View>
         <CompanyImage
           style={styles.image}
@@ -103,28 +95,6 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 12,
     color: '#333',
-  },
-  type: {
-    color: '#186fc9',
-    borderColor: '#186fc9',
-    backgroundColor: '#f1f7fc',
-    borderWidth: 1,
-    borderRadius: 3,
-    fontSize: 12,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    fontWeight: '500',
-    alignSelf: 'flex-start',
-  },
-  type2: {
-    color: '#f1630d',
-    borderColor: '#f1630d',
-    backgroundColor: '#fef6f0',
-  },
-  type3: {
-    color: '#dcaa0c',
-    borderColor: '#dcaa0c',
-    backgroundColor: '#fdfcf2',
   },
   image: {
     width: 40,
