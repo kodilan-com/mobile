@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 import {Recently, Search, Subscribe, Add, Post, SearchResults} from './pages';
+import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -67,6 +68,9 @@ function Tabs() {
 }
 
 function Router() {
+  useEffect(() => {
+    SplashScreen.hide();
+  });
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#1d9b54" barStyle="light-content" />

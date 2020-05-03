@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Feather';
 function Apply({email, url, position}) {
   function onPressEmail() {
     Linking.openURL(
-      `mailto:${url}?subject=${position} Başvurusu&body=%0A%0A%0A%0A-%0Akodilan.com%20arac%C4%B1l%C4%B1%C4%9F%C4%B1yla%20g%C3%B6nderilmi%C5%9Ftir.`,
+      `mailto:${email}?subject=${position} Başvurusu&body=%0A%0A%0A%0A-%0Akodilan.com%20arac%C4%B1l%C4%B1%C4%9F%C4%B1yla%20g%C3%B6nderilmi%C5%9Ftir.`,
     );
   }
   function onPressUrl() {
