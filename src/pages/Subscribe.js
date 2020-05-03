@@ -5,17 +5,39 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  ImageBackground,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {Picker} from '@react-native-community/picker';
 import Header from '../components/Header';
-import SearchSuggestions from '../components/SearchSuggestions';
+import postSubscribe from '../requests/postSubscribe';
 
 function Subscribe() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
-  const [time, setTime] = useState();
+  const [frequency, setFrequency] = useState('weekly');
+  function onPressSubscribe() {
+    if (name && email && frequency) {
+      postSubscribe({name, email, frequency})
+        .then(res => {
+          setName(null);
+          setEmail(null);
+          setFrequency('weekly');
+          Alert.alert(
+            'Başarılı',
+            'E-posta listesine aboneliğiniz gerçekleştirildi.',
+          );
+        })
+        .catch(err => {
+          Alert.alert('Uyarı', 'Hata: ' + err.response.data.errors.email[0]);
+        });
+    } else {
+      Alert.alert(
+        'Uyarı',
+        'Lütfen isim, e-posta ve bildirim aralığı alanlarının hepsini doldurunuz.',
+      );
+    }
+  }
   return (
     <View style={styles.container}>
       <Header title="Abone Ol" />
@@ -28,10 +50,10 @@ function Subscribe() {
           <Picker
             mode="dialog"
             style={styles.picker}
-            selectedValue={time}
-            onValueChange={value => setTime(value)}>
-            <Picker.Item label="Haftalık Bildirim" value="Haftalık" />
-            <Picker.Item label="Aylık Bildirim" value="Aylık" />
+            selectedValue={frequency}
+            onValueChange={value => setFrequency(value)}>
+            <Picker.Item label="Haftalık Bildirim" value="weekly" />
+            <Picker.Item label="Aylık Bildirim" value="monthly" />
           </Picker>
         </View>
         <TextInput
@@ -46,9 +68,14 @@ function Subscribe() {
           placeholderTextColor={'#666'}
           placeholder="E-posta Adresi"
           value={email}
-          onChangeText={value => setName(value)}
+          onChangeText={value => setEmail(value)}
+          autoCompleteType="email"
+          keyboardType="email-address"
         />
-        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.7}
+          onPress={() => onPressSubscribe()}>
           <Icon name="bell" color="#fff" size={24} />
           <Text style={styles.buttonText}>Aboneliği Başlat</Text>
         </TouchableOpacity>
