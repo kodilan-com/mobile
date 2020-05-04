@@ -7,10 +7,21 @@ import getRecentlyPosts from '../requests/getRecentlyPosts';
 
 function Recently() {
   const [recentlyPosts, setRecentlyPosts] = useState([]);
-  useEffect(() => {
+  const [refreshStatus, setRefreshStatus] = useState(false);
+  function loadPosts() {
     getRecentlyPosts().then(res => {
       setRecentlyPosts(res.data.data);
+      setRefreshStatus(false)
     });
+  }
+  function refresh(){
+    if(!refreshStatus){
+      setRefreshStatus(true)
+      loadPosts()
+    }
+  }
+  useEffect(() => {
+    loadPosts();
   }, []);
   return (
     <React.Fragment>
@@ -20,6 +31,8 @@ function Recently() {
           data={recentlyPosts}
           renderItem={item => <PostPreview data={item.item} />}
           keyExtractor={item => item.slug}
+          refreshing={refreshStatus}
+          onRefresh={() => refresh()}
         />
       ) : (
         <PostsLoading />
