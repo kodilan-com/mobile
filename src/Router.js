@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
-import {Recently, Search, Subscribe, Add, Post, SearchResults} from './pages';
+import {Recently, Search, Subscribe, Post, SearchResults} from './pages';
 import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
@@ -54,13 +54,6 @@ function Tabs() {
         component={Subscribe}
         options={{
           tabBarLabel: 'Abonelik',
-        }}
-      />
-      <Tab.Screen
-        name="Add"
-        component={Add}
-        options={{
-          tabBarLabel: 'İlan Ekle',
         }}
       />
     </Tab.Navigator>
