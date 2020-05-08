@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Platform} from 'react-native';
 
 function Header({title, button}) {
   return (
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#26ae61',
     paddingHorizontal: 20,
     justifyContent: 'space-between',
+    marginTop: Platform.OS === 'ios' ? 20 : 0,
   },
   title: {
     color: '#FFF',
