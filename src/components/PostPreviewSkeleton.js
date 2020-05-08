@@ -1,10 +1,6 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Feather';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
-import CompanyImage from './CompanyImage';
-import timeSince from '../helpers/timeSince';
-import PostType from './PostType';
 
 function PostPreviewSkeleton() {
   return (

@@ -5,32 +5,13 @@ import Icon from 'react-native-vector-icons/Feather';
 import SocialButtons from '../components/SocialButtons';
 import ShareButton from '../components/ShareButton';
 import Content from '../components/Content';
-import Tag from '../components/Tag';
+import Tags from '../components/Tags';
 import Apply from '../components/Apply';
 import CompanyImage from '../components/CompanyImage';
 import timeSince from '../helpers/timeSince';
 
 function Post({route}) {
   const data = route.params.data;
-  function renderTags() {
-    return (
-      <>
-        {data.tags.length ? (
-          <View style={styles.tags}>
-            {data.tags.map(tag => (
-              <Tag
-                name={tag.name}
-                key={data.slug + '-' + tag.slug + '-detail'}
-                type="tag"
-                tagStyle={styles.tag}
-                tagTextStyle={styles.tagText}
-              />
-            ))}
-          </View>
-        ) : null}
-      </>
-    );
-  }
   return (
     <View style={styles.container}>
       <Header
@@ -89,7 +70,17 @@ function Post({route}) {
               <Icon name="bookmark" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Etiketler:</Text>
             </View>
-            <View style={{flex: 1}}>{renderTags()}</View>
+            <View style={{flex: 1}}>
+              {data.tags.length ? (
+                <Tags
+                  tags={data.tags}
+                  slug={data.slug}
+                  style={styles.tags}
+                  tagStyle={styles.tag}
+                  tagTextStyle={styles.tagText}
+                />
+              ) : null}
+            </View>
           </View>
           <View style={styles.item}>
             <View style={styles.itemHeader}>

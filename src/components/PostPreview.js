@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Tag from '../components/Tag';
+import Tags from '../components/Tags';
 import CompanyImage from './CompanyImage';
 import timeSince from '../helpers/timeSince';
 import PostType from '../components/PostType';
@@ -11,25 +11,6 @@ function PostPreview({data}) {
   const navigation = useNavigation();
   function onPressPost() {
     navigation.push('Post', {data});
-  }
-  function renderTags() {
-    return (
-      <>
-        {data.tags.length ? (
-          <View style={styles.tags}>
-            {data.tags.map(tag => (
-              <Tag
-                name={tag.name}
-                key={data.slug + '-' + tag.slug}
-                type="tag"
-                tagStyle={styles.tag}
-                tagTextStyle={styles.tagText}
-              />
-            ))}
-          </View>
-        ) : null}
-      </>
-    );
   }
   return (
     <TouchableOpacity
@@ -68,7 +49,15 @@ function PostPreview({data}) {
           </Text>
         </View>
       </View>
-      {renderTags()}
+      {data.tags.length ? (
+        <Tags
+          tags={data.tags}
+          slug={data.slug}
+          style={styles.tags}
+          tagStyle={styles.tag}
+          tagTextStyle={styles.tagText}
+        />
+      ) : null}
     </TouchableOpacity>
   );
 }
