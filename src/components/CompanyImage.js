@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Image, Text} from 'react-native';
-import {SvgUri, SvgXml} from 'react-native-svg';
+import {Image} from 'react-native';
+import {SvgXml} from 'react-native-svg';
 import getSvgData from '../requests/getSvgData';
 
 function CompanyImage({uri, width, height, style}) {
