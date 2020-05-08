@@ -27,6 +27,7 @@ function PostPreview({data}) {
           uri={data.company.logo}
           width={40}
           height={40}
+          company_slug={data.company.slug}
         />
       </View>
       <View style={styles.info}>

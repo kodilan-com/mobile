@@ -25,6 +25,7 @@ function Post({route}) {
             uri={data.company.logo}
             width={48}
             height={48}
+            company_slug={data.company.slug}
           />
           <View style={styles.companyDetails}>
             <Text style={styles.companyName} numberOfLines={1}>

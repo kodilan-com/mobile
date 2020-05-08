@@ -5,12 +5,17 @@ import Header from '../components/Header';
 import PostsLoading from '../components/PostsLoading';
 import getSearchPosts from '../requests/getSearchPosts';
 import getTagPosts from '../requests/getTagPosts';
+import getCompanyPosts from '../requests/getCompanyPosts';
 
 function SearchResults({route}) {
   const [searchPosts, setSearchPosts] = useState([]);
   useEffect(() => {
     if (route.params.params.tag) {
       getTagPosts(route.params.params.tag).then(res => {
+        setSearchPosts(res.data.data);
+      });
+    } else if (route.params.params.company) {
+      getCompanyPosts(route.params.params.company).then(res => {
         setSearchPosts(res.data.data);
       });
     } else {

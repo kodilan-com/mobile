@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Image} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import {SvgXml} from 'react-native-svg';
+import {useNavigation} from '@react-navigation/native';
 import getSvgData from '../requests/getSvgData';
 
-function CompanyImage({uri, width, height, style}) {
+function CompanyImage({uri, width, height, style, company_slug}) {
   const [svg, setSvg] = useState();
+  const navigation = useNavigation();
   useEffect(() => {
     if (uri.includes('.svg')) {
       getSvgData(uri).then(res => {
@@ -12,8 +14,13 @@ function CompanyImage({uri, width, height, style}) {
       });
     }
   }, []);
+  function onPressImage(slug) {
+    navigation.push('SearchResults', {params: {company: slug}});
+  }
   return (
-    <>
+    <TouchableOpacity
+      activeOpacity={0.75}
+      onPress={() => onPressImage(company_slug)}>
       {uri.includes('.svg') ? (
         svg ? (
           <SvgXml style={style} width={width} height={height} xml={svg} />
@@ -28,7 +35,7 @@ function CompanyImage({uri, width, height, style}) {
       ) : (
         <Image style={style} source={{uri}} />
       )}
-    </>
+    </TouchableOpacity>
   );
 }
 
