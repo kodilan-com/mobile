@@ -11,13 +11,13 @@ function Recently() {
   function loadPosts() {
     getRecentlyPosts().then(res => {
       setRecentlyPosts(res.data.data);
-      setRefreshStatus(false)
+      setRefreshStatus(false);
     });
   }
-  function refresh(){
-    if(!refreshStatus){
-      setRefreshStatus(true)
-      loadPosts()
+  function refresh() {
+    if (!refreshStatus) {
+      setRefreshStatus(true);
+      loadPosts();
     }
   }
   useEffect(() => {
