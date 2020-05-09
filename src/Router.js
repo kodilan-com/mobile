@@ -66,15 +66,17 @@ function Router() {
   });
   return (
     <NavigationContainer>
-      {
-        Platform.OS === 'ios' ? (
-          <View style={{ height: 20, backgroundColor: '#1d9b54', width: '100%' }}>
-            <StatusBar translucent backgroundColor="#1d9b54" barStyle="light-content" />
-          </View>
-        ) : (
+      {Platform.OS === 'ios' ? (
+        <View style={{height: 20, backgroundColor: '#1d9b54', width: '100%'}}>
+          <StatusBar
+            translucent
+            backgroundColor="#1d9b54"
+            barStyle="light-content"
+          />
+        </View>
+      ) : (
         <StatusBar backgroundColor="#1d9b54" barStyle="light-content" />
-        )
-      }
+      )}
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="Tabs" component={Tabs} />
         <Stack.Screen name="Post" component={Post} />
