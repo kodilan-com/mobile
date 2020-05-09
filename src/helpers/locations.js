@@ -1,57 +1,75 @@
 const locations = [
   {
-    location: 'İstanbul',
+    label: 'İstanbul',
+    key: 'İstanbul',
   },
   {
-    location: 'Ankara',
+    label: 'Ankara',
+    key: 'Ankara',
   },
   {
-    location: 'İzmir',
+    label: 'İzmir',
+    key: 'İzmir',
   },
   {
-    location: 'Remote',
+    label: 'Remote',
+    key: 'Remote',
   },
   {
-    location: 'Bursa',
+    label: 'Bursa',
+    key: 'Bursa',
   },
   {
-    location: 'Trabzon',
+    label: 'Trabzon',
+    key: 'Trabzon',
   },
   {
-    location: 'Denizli',
+    label: 'Denizli',
+    key: 'Denizli',
   },
   {
-    location: 'Kocaeli',
+    label: 'Kocaeli',
+    key: 'Kocaeli',
   },
   {
-    location: 'Kahramanmaraş',
+    label: 'Kahramanmaraş',
+    key: 'Kahramanmaraş',
   },
   {
-    location: 'Sakarya',
+    label: 'Sakarya',
+    key: 'Sakarya',
   },
   {
-    location: 'Antalya',
+    label: 'Antalya',
+    key: 'Antalya',
   },
   {
-    location: 'Muğla',
+    label: 'Muğla',
+    key: 'Muğla',
   },
   {
-    location: 'Gaziantep',
+    label: 'Gaziantep',
+    key: 'Gaziantep',
   },
   {
-    location: 'Adana',
+    label: 'Adana',
+    key: 'Adana',
   },
   {
-    location: 'Konya',
+    label: 'Konya',
+    key: 'Konya',
   },
   {
-    location: 'Çorum',
+    label: 'Çorum',
+    key: 'Çorum',
   },
   {
-    location: 'Eskişehir',
+    label: 'Eskişehir',
+    key: 'Eskişehir',
   },
   {
-    location: 'Mersin',
+    label: 'Mersin',
+    key: 'Mersin',
   },
 ];
 

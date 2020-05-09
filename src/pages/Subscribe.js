@@ -8,14 +8,19 @@ import {
   Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {Picker} from '@react-native-community/picker';
+import ModalSelector from 'react-native-modal-selector';
 import Header from '../components/Header';
 import postSubscribe from '../requests/postSubscribe';
+
+const picker_data = [
+  {label: 'Haftalık Bildirim', key: 'weekly'},
+  {label: 'Aylık Bildirim', key: 'monthly'},
+];
 
 function Subscribe() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
-  const [frequency, setFrequency] = useState('weekly');
+  const [frequency, setFrequency] = useState();
   const [editable, setEditable] = useState(false);
   useEffect(() => {
     setEditable(true);
@@ -51,14 +56,17 @@ function Subscribe() {
           kayıt olun!
         </Text>
         <View style={styles.pickerBox}>
-          <Picker
-            mode="dialog"
-            style={styles.picker}
-            selectedValue={frequency}
-            onValueChange={value => setFrequency(value)}>
-            <Picker.Item label="Haftalık Bildirim" value="weekly" />
-            <Picker.Item label="Aylık Bildirim" value="monthly" />
-          </Picker>
+          <ModalSelector
+            data={picker_data}
+            animationType={'slide'}
+            selectStyle={styles.picker}
+            selectTextStyle={styles.pickerText}
+            initValueTextStyle={{color: '#666'}}
+            cancelStyle={{paddingVertical: 12}}
+            cancelText={'Seçim Aracını Kapat'}
+            initValue={'Gönderim Aralığı'}
+            onChange={option => setFrequency(option.key)}
+          />
         </View>
         <TextInput
           editable={editable}
@@ -112,16 +120,22 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   pickerBox: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
     width: '90%',
-    backgroundColor: '#fff',
     position: 'relative',
   },
   picker: {
     height: 50,
-    color: '#666',
+    borderColor: 'red',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingHorizontal: 12,
+  },
+  pickerText: {
+    color: '#333',
   },
   button: {
     width: '90%',

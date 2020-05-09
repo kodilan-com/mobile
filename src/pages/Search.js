@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {Picker} from '@react-native-community/picker';
+import ModalSelector from 'react-native-modal-selector';
 import Header from '../components/Header';
 import SearchSuggestions from '../components/SearchSuggestions';
 import locations from '../helpers/locations';
@@ -24,6 +24,7 @@ function Search({navigation}) {
       params: {query: searchText, location: searchLocation},
     });
   }
+  let index = 0;
   return (
     <View style={styles.container}>
       <Header title="İlan Arama" />
@@ -37,20 +38,17 @@ function Search({navigation}) {
           onChangeText={text => setSearchText(text)}
         />
         <View style={styles.pickerBox}>
-          <Picker
-            mode="dialog"
-            style={styles.picker}
-            selectedValue={searchLocation}
-            onValueChange={value => setSearchLocation(value)}>
-            <Picker.Item label="Şehir Seçiniz" value="" />
-            {locations.map(item => (
-              <Picker.Item
-                key={'location' + item.location}
-                label={item.location}
-                value={item.location}
-              />
-            ))}
-          </Picker>
+          <ModalSelector
+            data={locations}
+            animationType={'slide'}
+            selectStyle={styles.picker}
+            selectTextStyle={styles.pickerText}
+            initValueTextStyle={{color: '#666'}}
+            cancelStyle={{paddingVertical: 12}}
+            cancelText={'Seçim Aracını Kapat'}
+            initValue="Şehir Seçin"
+            onChange={option => setSearchLocation(option.key)}
+          />
         </View>
         <TouchableOpacity
           style={styles.button}
@@ -86,17 +84,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   pickerBox: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
     width: '90%',
-    backgroundColor: '#fff',
     marginTop: 12,
     position: 'relative',
   },
   picker: {
     height: 50,
-    color: '#666',
+    borderColor: 'red',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingHorizontal: 12,
+  },
+  pickerText: {
+    color: '#333',
   },
   button: {
     width: '90%',
