@@ -515,7 +515,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

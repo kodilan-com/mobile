@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#26ae61',
     paddingHorizontal: 20,
     justifyContent: 'space-between',
-    marginTop: Platform.OS === 'ios' ? 20 : 0,
   },
   title: {
     color: '#FFF',
