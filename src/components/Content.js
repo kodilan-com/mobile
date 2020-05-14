@@ -2,7 +2,7 @@ import React from 'react';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 
 function Content({content, style}) {
-  function htmlTemplate(content) {
+  function htmlTemplate() {
     return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body>${content}<br/></body></html>`;
   }
   return (

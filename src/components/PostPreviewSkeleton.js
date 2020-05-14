@@ -4,10 +4,7 @@ import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 
 function PostPreviewSkeleton() {
   return (
-    <View
-      style={styles.post}
-      activeOpacity={0.75}
-      onPress={() => onPressPost()}>
+    <View style={styles.post} activeOpacity={0.75}>
       <View style={styles.top}>
         <View style={{flex: 1}}>
           <ShimmerPlaceHolder
@@ -34,7 +31,7 @@ function PostPreviewSkeleton() {
       </View>
       <View style={styles.info}>
         {[1, 2, 3].map(key => (
-          <View style={styles.infoItem} key={"item-skeleton-" + key}>
+          <View style={styles.infoItem} key={'item-skeleton-' + key}>
             <ShimmerPlaceHolder
               colorShimmer={['#ebebeb', '#ddd', '#ebebeb']}
               autoRun={true}

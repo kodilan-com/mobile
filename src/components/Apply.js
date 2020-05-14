@@ -39,10 +39,7 @@ function Apply({email, url, position}) {
   function onLongPressButton(text) {
     Clipboard.setString(text);
     if (Platform.OS === 'android') {
-      ToastAndroid.show(
-        'Bağlantı panoya kopyalandı.',
-        ToastAndroid.SHORT,
-      );
+      ToastAndroid.show('Bağlantı panoya kopyalandı.', ToastAndroid.SHORT);
     } else {
       Alert.alert('Bilgi', 'Bağlantı panoya kopyalandı.');
     }

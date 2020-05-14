@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getSvgData = (url) => {
+const getSvgData = url => {
   return new Promise((resolve, reject) => {
     const request_url = url;
     axios({

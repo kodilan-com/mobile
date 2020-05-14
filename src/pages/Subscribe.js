@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
   },
   picker: {
     height: 50,
-    borderColor: 'red',
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#ccc',

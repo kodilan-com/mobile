@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getTagPosts = (tag) => {
+const getTagPosts = tag => {
   return new Promise((resolve, reject) => {
     const request_url = `https://api.kodilan.com/tags/${tag}/posts`;
     axios({

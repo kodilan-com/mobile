@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 function SocialButtons({web, twitter, linkedin}) {
   function onPressButton(url, platform) {
-    platform === 'twitter' ? url = `https://twitter.com/${url}` : null
+    platform === 'twitter' ? (url = `https://twitter.com/${url}`) : null;
     Linking.openURL(url);
   }
   return (

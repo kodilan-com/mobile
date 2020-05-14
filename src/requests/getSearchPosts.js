@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const getSearchPosts = (params) => {
+const getSearchPosts = params => {
   return new Promise((resolve, reject) => {
     const request_url = 'https://api.kodilan.com/search';
     axios({
       method: 'GET',
       url: request_url,
-      params: params
+      params: params,
     })
       .then(res => {
         resolve(res);

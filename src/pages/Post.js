@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/Header';
 import Icon from 'react-native-vector-icons/Feather';
 import SocialButtons from '../components/SocialButtons';
@@ -175,7 +175,6 @@ const styles = StyleSheet.create({
   tag: {
     paddingVertical: 3,
     paddingHorizontal: 6,
-    marginBottom: 0,
     marginBottom: 10,
   },
   tagText: {
