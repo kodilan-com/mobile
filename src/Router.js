@@ -6,6 +6,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 import {Recently, Search, Subscribe, Post, SearchResults} from './pages';
 import SplashScreen from 'react-native-splash-screen';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,7 +34,7 @@ function Tabs() {
         activeTintColor: '#FFF',
         activeBackgroundColor: '#1d9b54',
         inactiveTintColor: '#EEE',
-        style: {backgroundColor: '#26ae61', height: 55, borderTopWidth: 0},
+        style: {backgroundColor: '#26ae61', borderTopWidth: 0},
       }}>
       <Tab.Screen
         name="Recently"
@@ -67,7 +68,7 @@ function Router() {
   return (
     <NavigationContainer>
       {Platform.OS === 'ios' ? (
-        <View style={{height: 20, backgroundColor: '#1d9b54', width: '100%'}}>
+        <View style={{height: getStatusBarHeight(), backgroundColor: '#1d9b54', width: '100%'}}>
           <StatusBar
             translucent
             backgroundColor="#1d9b54"
