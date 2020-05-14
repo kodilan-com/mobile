@@ -68,7 +68,12 @@ function Router() {
   return (
     <NavigationContainer>
       {Platform.OS === 'ios' ? (
-        <View style={{height: getStatusBarHeight(), backgroundColor: '#1d9b54', width: '100%'}}>
+        <View
+          style={{
+            height: getStatusBarHeight(),
+            backgroundColor: '#1d9b54',
+            width: '100%',
+          }}>
           <StatusBar
             translucent
             backgroundColor="#1d9b54"
