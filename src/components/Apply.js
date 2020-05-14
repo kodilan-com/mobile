@@ -1,15 +1,51 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Linking} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+  Alert,
+  Platform,
+  ToastAndroid,
+} from 'react-native';
+import Clipboard from '@react-native-community/clipboard';
 import Icon from 'react-native-vector-icons/Feather';
 
 function Apply({email, url, position}) {
-  function onPressEmail() {
-    Linking.openURL(
-      `mailto:${email}?subject=${position} Başvurusu&body=%0A%0A%0A%0A-%0Akodilan.com%20arac%C4%B1l%C4%B1%C4%9F%C4%B1yla%20g%C3%B6nderilmi%C5%9Ftir.`,
+  function emailNotSupported() {
+    Alert.alert(
+      'E-posta uygulaması bulunamadı!',
+      `${email} adresine "${position} Başvurusu" başlığı ile e-posta gönderebilirsiniz. E-posta adresini kopyalamak için başvuru düğmesine basılı tutabilirsiniz.`,
     );
+  }
+  function onPressEmail() {
+    const email_url = `mailto:${email}?subject=${position} Başvurusu&body=%0A%0A%0A%0A-%0Akodilan.com aracılığıyla gönderilmiştir`;
+    Linking.canOpenURL(email_url)
+      .then(supported => {
+        if (supported) {
+          Linking.openURL(email_url);
+        } else {
+          emailNotSupported();
+        }
+      })
+      .catch(err => {
+        emailNotSupported();
+      });
   }
   function onPressUrl() {
     Linking.openURL(url);
+  }
+  function onLongPressButton(text) {
+    Clipboard.setString(text);
+    if (Platform.OS === 'android') {
+      ToastAndroid.show(
+        'E-posta adresi panoya kopyalandı.',
+        ToastAndroid.SHORT,
+      );
+    } else {
+      Alert.alert('Bilgi', 'E-posta adresi panoya kopyalandı.');
+    }
   }
   return (
     <View style={styles.applyButtons}>
@@ -17,16 +53,18 @@ function Apply({email, url, position}) {
         <TouchableOpacity
           activeOpacity={0.8}
           style={styles.applyButton}
-          onPress={() => onPressEmail()}>
+          onPress={() => onPressEmail()}
+          onLongPress={() => onLongPressButton(email)}>
           <Icon name="mail" color="#FFF" size={20} />
           <Text style={styles.applyButtonText}>E-Posta ile Başvur</Text>
         </TouchableOpacity>
       ) : null}
       {url ? (
         <TouchableOpacity
-          onPress={() => onPressUrl()}
           activeOpacity={0.8}
-          style={[styles.applyButton, {marginTop: 10}]}>
+          style={[styles.applyButton, {marginTop: 10}]}
+          onPress={() => onPressUrl()}
+          onLongPress={() => onLongPressButton(url)}>
           <Icon name="link" color="#FFF" size={20} />
           <Text style={styles.applyButtonText}>Site Üzerinden Başvur</Text>
         </TouchableOpacity>
