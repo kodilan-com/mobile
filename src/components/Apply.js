@@ -40,11 +40,11 @@ function Apply({email, url, position}) {
     Clipboard.setString(text);
     if (Platform.OS === 'android') {
       ToastAndroid.show(
-        'E-posta adresi panoya kopyalandı.',
+        'Bağlantı panoya kopyalandı.',
         ToastAndroid.SHORT,
       );
     } else {
-      Alert.alert('Bilgi', 'E-posta adresi panoya kopyalandı.');
+      Alert.alert('Bilgi', 'Bağlantı panoya kopyalandı.');
     }
   }
   return (
