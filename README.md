@@ -37,4 +37,4 @@ Please take a look at the [releases](https://github.com/orcuntuna/kodilan-mobile
 
 ### Contributors
 
-- [Orçun Tuna](https://github.com/orcuntuna/kodilan-mobile)
+- [Orçun Tuna](https://github.com/orcuntuna)
