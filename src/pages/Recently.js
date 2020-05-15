@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Alert} from 'react-native';
+import NetInfo from '@react-native-community/netinfo';
 import PostPreview from '../components/PostPreview';
 import Header from '../components/Header';
 import PostsLoading from '../components/PostsLoading';
@@ -20,8 +21,29 @@ function Recently() {
       loadPosts();
     }
   }
+  function checkConnection() {
+    NetInfo.fetch().then(status => {
+      if (status.isConnected) {
+        loadPosts();
+      } else {
+        Alert.alert(
+          'Uyarı',
+          'Uygulama verilerine erişebilmek için internet bağlantısı gereklidir!',
+          [
+            {
+              text: 'Tekrar Dene',
+              onPress: () => checkConnection(),
+            },
+          ],
+          {
+            cancelable: false,
+          },
+        );
+      }
+    });
+  }
   useEffect(() => {
-    loadPosts();
+    checkConnection();
   }, []);
   return (
     <React.Fragment>
