@@ -125,9 +125,11 @@ const styles = StyleSheet.create({
   image: {
     width: 48,
     height: 48,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 24,
   },
   companyDetails: {
-    marginLeft: 25,
+    marginLeft: 20,
     flex: 1,
   },
   companyName: {
