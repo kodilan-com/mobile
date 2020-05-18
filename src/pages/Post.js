@@ -36,10 +36,7 @@ function Post({route}) {
             </Text>
           </View>
         </View>
-        <Content
-          style={{width: '100%', marginVertical: 25}}
-          content={data.description}
-        />
+        <Content style={styles.descriptionStyle} content={data.description} />
         <View style={styles.card}>
           <View style={styles.item}>
             <View style={styles.itemHeader}>
@@ -53,7 +50,7 @@ function Post({route}) {
               <Icon name="user" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Pozisyon:</Text>
             </View>
-            <View style={{flex: 1}}>
+            <View style={styles.flexStyle}>
               <Text style={styles.itemContent}>{data.position}</Text>
             </View>
           </View>
@@ -62,7 +59,7 @@ function Post({route}) {
               <Icon name="map-pin" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Lokasyon:</Text>
             </View>
-            <View style={{flex: 1}}>
+            <View style={styles.flexStyle}>
               <Text style={styles.itemContent}>{data.location}</Text>
             </View>
           </View>
@@ -71,7 +68,7 @@ function Post({route}) {
               <Icon name="bookmark" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Etiketler:</Text>
             </View>
-            <View style={{flex: 1}}>
+            <View style={styles.flexStyle}>
               {data.tags.length ? (
                 <Tags
                   tags={data.tags}
@@ -88,7 +85,7 @@ function Post({route}) {
               <Icon name="share-2" color="#26ae61" size={18} />
               <Text style={styles.itemHeaderText}>Bağlantılar:</Text>
             </View>
-            <View style={{flex: 1}}>
+            <View style={styles.flexStyle}>
               <SocialButtons
                 web={data.company.www}
                 twitter={data.company.twitter}
@@ -181,6 +178,13 @@ const styles = StyleSheet.create({
   },
   tagText: {
     fontSize: 13,
+  },
+  flexStyle: {
+    flex: 1,
+  },
+  descriptionStyle: {
+    width: '100%',
+    marginVertical: 25,
   },
 });
 

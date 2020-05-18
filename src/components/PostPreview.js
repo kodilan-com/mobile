@@ -18,7 +18,7 @@ function PostPreview({data}) {
       activeOpacity={0.75}
       onPress={() => onPressPost()}>
       <View style={styles.top}>
-        <View style={{flex: 1}}>
+        <View style={styles.flexStyle}>
           <Text style={styles.title}>{data.position}</Text>
           <PostType type={data.type} />
         </View>
@@ -127,6 +127,9 @@ const styles = StyleSheet.create({
   tagText: {
     color: '#666',
     fontSize: 13,
+  },
+  flexStyle: {
+    flex: 1,
   },
 });
 

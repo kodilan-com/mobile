@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+// TODO : Fix Exhaustive Deps
 import React, {useEffect, useState} from 'react';
 import {FlatList, Alert} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';

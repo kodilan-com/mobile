@@ -13,7 +13,7 @@ function CompanyImage({uri, width, height, style, company_slug}) {
         setSvg(res.data);
       });
     }
-  }, []);
+  }, [uri]);
   function onPressImage(slug) {
     navigation.push('SearchResults', {params: {company: slug}});
   }
