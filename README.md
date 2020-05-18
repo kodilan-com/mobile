@@ -40,6 +40,7 @@ Please take a look at the [releases](https://github.com/kodilan-com/mobile/relea
 ### Contributors
 
 - [Orçun Tuna](https://github.com/orcuntuna)
+- [Arif Doğan](https://github.com/doganarif)
 
 ### Screenshots
 
