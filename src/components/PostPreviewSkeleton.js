@@ -37,7 +37,6 @@ function PostPreviewSkeleton() {
               autoRun={true}
               style={styles.infoText}
             />
-            }{' '}
           </View>
         ))}
       </View>
@@ -47,7 +46,7 @@ function PostPreviewSkeleton() {
             key={'tag-skeleton-' + index}
             colorShimmer={['#ebebeb', '#ddd', '#ebebeb']}
             autoRun={true}
-            style={[styles.tag, {width: width}]}
+            style={[styles.tag, {width}]}
           />
         ))}
       </View>

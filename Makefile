@@ -14,6 +14,8 @@ start:
 android:
 	react-native run-android
 
+pod:
+	cd ios && pod install
 # run on ios
 ios:
 	react-native run-ios --simulator="iPhone 11 Pro"
