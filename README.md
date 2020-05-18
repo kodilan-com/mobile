@@ -35,6 +35,13 @@ npm run ios
 
 Please take a look at the [releases](https://github.com/orcuntuna/kodilan-mobile/releases) page.
 
+### Screenshots
+
+| (Recently Posts / Search Results) | (Search / Detail 1)) | (Subscribe / Detail 2) |
+| :-------------: |:-------------:| :-------------:|
+| ![Recently Posts](screenshots/recently.png) | ![Search](screenshots/search.png) | ![Subscribe](screenshots/subscribe.png) |
+| ![Search Results](screenshots/search-results.png) | ![Post Detail 1](screenshots/detail-1.png) | ![Post Detail 2](screenshots/detail-2.png) |
+
 ### Contributors
 
 - [Orçun Tuna](https://github.com/orcuntuna)
