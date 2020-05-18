@@ -12,11 +12,13 @@ This project based on [React Native](https://github.com/facebook/react-native) s
 
 We use [npm](https://www.npmjs.com/) as our package manager and you should have npm installed on your machine to be able to run this project locally. After that you can run the following commands in order.
 
+If you have not run react native project before, prepare development environment by following [Environment Setup Documentation](https://reactnative.dev/docs/environment-setup)
+
 **Android:**
 
 ```
-git clone https://github.com/orcuntuna/kodilan-mobile.git kodilan
-cd kodilan
+git clone https://github.com/kodilan-com/mobile.git kodilan-mobile
+cd kodilan-mobile
 npm install
 npm run android
 ```
@@ -24,8 +26,8 @@ npm run android
 **iOS:**
 
 ```
-git clone https://github.com/orcuntuna/kodilan-mobile.git kodilan
-cd kodilan
+git clone https://github.com/kodilan-com/mobile.git kodilan-mobile
+cd kodilan-mobile
 npm install
 cd ios; pod install; cd ..
 npm run ios
@@ -33,15 +35,12 @@ npm run ios
 
 ### Releases
 
-Please take a look at the [releases](https://github.com/orcuntuna/kodilan-mobile/releases) page.
-
-### Screenshots
-
-| (Recently Posts / Search Results) | (Search / Detail 1)) | (Subscribe / Detail 2) |
-| :-------------: |:-------------:| :-------------:|
-| ![Recently Posts](screenshots/recently.png) | ![Search](screenshots/search.png) | ![Subscribe](screenshots/subscribe.png) |
-| ![Search Results](screenshots/search-results.png) | ![Post Detail 1](screenshots/detail-1.png) | ![Post Detail 2](screenshots/detail-2.png) |
+Please take a look at the [releases](https://github.com/kodilan-com/mobile/releases) page.
 
 ### Contributors
 
 - [Orçun Tuna](https://github.com/orcuntuna)
+
+### Screenshots
+
+![Screens](screenshots/screens.png)
