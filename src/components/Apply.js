@@ -29,7 +29,7 @@ function Apply({email, url, position}) {
           emailNotSupported();
         }
       })
-      .catch(err => {
+      .catch(() => {
         emailNotSupported();
       });
   }
@@ -59,7 +59,7 @@ function Apply({email, url, position}) {
       {url ? (
         <TouchableOpacity
           activeOpacity={0.8}
-          style={[styles.applyButton, {marginTop: 10}]}
+          style={[styles.applyButton, styles.applyButtonMargin]}
           onPress={() => onPressUrl()}
           onLongPress={() => onLongPressButton(url)}>
           <Icon name="link" color="#FFF" size={20} />
@@ -88,6 +88,9 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  applyButtonMargin: {
+    marginTop: 10,
   },
 });
 

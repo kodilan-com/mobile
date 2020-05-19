@@ -23,7 +23,7 @@ function SearchResults({route}) {
         setSearchPosts(res.data.data);
       });
     }
-  }, []);
+  }, [route.params.params]);
   return (
     <React.Fragment>
       <Header title="Arama Sonuçları" />

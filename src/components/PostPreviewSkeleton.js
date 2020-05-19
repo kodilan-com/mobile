@@ -6,7 +6,7 @@ function PostPreviewSkeleton() {
   return (
     <View style={styles.post} activeOpacity={0.75}>
       <View style={styles.top}>
-        <View style={{flex: 1}}>
+        <View style={styles.flexStyle}>
           <ShimmerPlaceHolder
             colorShimmer={['#ebebeb', '#ddd', '#ebebeb']}
             autoRun={true}
@@ -15,12 +15,7 @@ function PostPreviewSkeleton() {
           <ShimmerPlaceHolder
             colorShimmer={['#ebebeb', '#ddd', '#ebebeb']}
             autoRun={true}
-            style={{
-              width: 100,
-              height: 25,
-              borderRadius: 3,
-              marginVertical: 10,
-            }}
+            style={styles.firstShimmerStyle}
           />
         </View>
         <ShimmerPlaceHolder
@@ -45,13 +40,13 @@ function PostPreviewSkeleton() {
           </View>
         ))}
       </View>
-      <View style={[styles.tags, {marginTop: 20}]}>
+      <View style={[styles.tags, styles.lastShimmerMarginer]}>
         {[60, 100, 50, 70, 45, 80].map((width, index) => (
           <ShimmerPlaceHolder
             key={'tag-skeleton-' + index}
             colorShimmer={['#ebebeb', '#ddd', '#ebebeb']}
             autoRun={true}
-            style={[styles.tag, {width: width}]}
+            style={[styles.tag, {width}]}
           />
         ))}
       </View>
@@ -115,6 +110,18 @@ const styles = StyleSheet.create({
     width: 14,
     marginRight: 2,
     borderRadius: 8,
+  },
+  flexStyle: {
+    flex: 1,
+  },
+  firstShimmerStyle: {
+    width: 100,
+    height: 25,
+    borderRadius: 3,
+    marginVertical: 10,
+  },
+  lastShimmerMarginer: {
+    marginTop: 20,
   },
 });
 

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StatusBar, Platform, View} from 'react-native';
+import {StatusBar, Platform, View, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -68,12 +68,7 @@ function Router() {
   return (
     <NavigationContainer>
       {Platform.OS === 'ios' ? (
-        <View
-          style={{
-            height: getStatusBarHeight(),
-            backgroundColor: '#1d9b54',
-            width: '100%',
-          }}>
+        <View style={styles.iosContainerStyle}>
           <StatusBar
             translucent
             backgroundColor="#1d9b54"
@@ -92,4 +87,11 @@ function Router() {
   );
 }
 
+const styles = StyleSheet.create({
+  iosContainerStyle: {
+    height: getStatusBarHeight(),
+    backgroundColor: '#1d9b54',
+    width: '100%',
+  },
+});
 export default Router;

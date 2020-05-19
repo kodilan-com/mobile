@@ -24,7 +24,6 @@ function Search({navigation}) {
       params: {query: searchText, location: searchLocation},
     });
   }
-  let index = 0;
   return (
     <View style={styles.container}>
       <Header title="İlan Arama" />
@@ -43,8 +42,8 @@ function Search({navigation}) {
             animationType={'slide'}
             selectStyle={styles.picker}
             selectTextStyle={styles.pickerText}
-            initValueTextStyle={{color: '#666'}}
-            cancelStyle={{paddingVertical: 12}}
+            initValueTextStyle={styles.modalInitTextStyle}
+            cancelStyle={styles.modalCancelStyle}
             cancelText={'Seçim Aracını Kapat'}
             initValue="Şehir Seçin"
             onChange={option => setSearchLocation(option.key)}
@@ -117,6 +116,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     marginLeft: 10,
+  },
+  modalCancelStyle: {
+    paddingVertical: 12,
+  },
+  modalInitTextStyle: {
+    color: '#666',
   },
 });
 

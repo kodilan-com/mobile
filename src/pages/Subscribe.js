@@ -61,8 +61,8 @@ function Subscribe() {
             animationType={'slide'}
             selectStyle={styles.picker}
             selectTextStyle={styles.pickerText}
-            initValueTextStyle={{color: '#666'}}
-            cancelStyle={{paddingVertical: 12}}
+            initValueTextStyle={styles.modalInitTextValue}
+            cancelStyle={styles.modalCancelStyle}
             cancelText={'Seçim Aracını Kapat'}
             initValue={'Gönderim Aralığı'}
             onChange={option => setFrequency(option.key)}
@@ -159,6 +159,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 24,
     color: '#555',
+  },
+  modalInitTextValue: {
+    color: '#666',
+  },
+  modalCancelStyle: {
+    paddingVertical: 12,
   },
 });
 
