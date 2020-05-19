@@ -6,9 +6,10 @@ import PostsLoading from '../components/PostsLoading';
 import getSearchPosts from '../requests/getSearchPosts';
 import getTagPosts from '../requests/getTagPosts';
 import getCompanyPosts from '../requests/getCompanyPosts';
+import Notfound from '../components/NotFound';
 
 function SearchResults({route}) {
-  const [searchPosts, setSearchPosts] = useState([]);
+  const [searchPosts, setSearchPosts] = useState(null);
   useEffect(() => {
     if (route.params.params.tag) {
       getTagPosts(route.params.params.tag).then(res => {
@@ -27,15 +28,13 @@ function SearchResults({route}) {
   return (
     <React.Fragment>
       <Header title="Arama Sonuçları" />
-      {searchPosts.length ? (
+      {searchPosts?.length ? (
         <FlatList
           data={searchPosts}
           renderItem={item => <PostPreview data={item.item} />}
           keyExtractor={item => item.slug}
         />
-      ) : (
-        <PostsLoading />
-      )}
+      ) : !searchPosts ? <PostsLoading /> : <Notfound />}
     </React.Fragment>
   );
 }
