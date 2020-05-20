@@ -28,6 +28,7 @@ function Recently() {
   function refresh() {
     if (!refreshStatus) {
       setRefreshStatus(true);
+      setPage(1);
       loadPosts();
     }
   }
