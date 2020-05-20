@@ -1,19 +1,7 @@
-import axios from 'axios';
+import instance from './instance';
 
 const getCompanyPosts = company_slug => {
-  return new Promise((resolve, reject) => {
-    const request_url = `https://api.kodilan.com/companies/${company_slug}/posts`;
-    axios({
-      method: 'GET',
-      url: request_url,
-    })
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
-  });
+  return instance.get(`companies/${company_slug}/posts`);
 };
 
 export default getCompanyPosts;
