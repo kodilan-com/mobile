@@ -1,23 +1,10 @@
-import axios from 'axios';
+import instance from './instance';
 
 const getRecentlyPosts = ({email, frequency, name}) => {
-  return new Promise((resolve, reject) => {
-    const request_url = 'https://api.kodilan.com/newsletters';
-    axios({
-      method: 'POST',
-      url: request_url,
-      data: {
-        email,
-        frequency,
-        name,
-      },
-    })
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
+  return instance.post('newsletters', {
+    email,
+    frequency,
+    name,
   });
 };
 
