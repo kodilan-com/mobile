@@ -23,6 +23,14 @@ const types = {
       backgroundColor: '#fdfcf2',
     },
   },
+  4: {
+    text: 'Freelance',
+    style: {
+      color: '#53b427',
+      borderColor: '#53b427',
+      backgroundColor: '#f5fbf2',
+    },
+  },
 };
 
 export default types;
