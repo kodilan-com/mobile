@@ -10,7 +10,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import ModalSelector from 'react-native-modal-selector';
 import Header from '../components/Header';
 import SearchSuggestions from '../components/SearchSuggestions';
-import defaultLocations from '../helpers/locations';
 import getLocations from '../requests/getLocations';
 
 function Search({navigation}) {
@@ -23,10 +22,6 @@ function Search({navigation}) {
     getLocations()
       .then(res => {
         setLocations(res.data);
-      })
-      .catch(function(error) {
-        // use default values
-        setLocations(defaultLocations);
       });
   }, []);
 
