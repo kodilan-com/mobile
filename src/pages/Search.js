@@ -10,15 +10,21 @@ import Icon from 'react-native-vector-icons/Feather';
 import ModalSelector from 'react-native-modal-selector';
 import Header from '../components/Header';
 import SearchSuggestions from '../components/SearchSuggestions';
-import locations from '../helpers/locations';
+import getLocations from '../requests/getLocations';
 
 function Search({navigation}) {
   const [searchText, setSearchText] = useState();
   const [searchLocation, setSearchLocation] = useState();
+  const [locations, setLocations] = useState([]);
   const [editable, setEditable] = useState(false);
   useEffect(() => {
     setEditable(true);
+    getLocations()
+      .then(res => {
+        setLocations(res.data);
+      });
   }, []);
+
   function onPressSearch() {
     navigation.navigate('SearchResults', {
       params: {query: searchText, location: searchLocation},
@@ -39,6 +45,8 @@ function Search({navigation}) {
         <View style={styles.pickerBox}>
           <ModalSelector
             data={locations}
+            keyExtractor={item => item.location}
+            labelExtractor={item => item.location}
             animationType={'slide'}
             selectStyle={styles.picker}
             selectTextStyle={styles.pickerText}
@@ -46,7 +54,7 @@ function Search({navigation}) {
             cancelStyle={styles.modalCancelStyle}
             cancelText={'Seçim Aracını Kapat'}
             initValue="Şehir Seçin"
-            onChange={option => setSearchLocation(option.key)}
+            onChange={option => setSearchLocation(option.location)}
           />
         </View>
         <TouchableOpacity
